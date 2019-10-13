@@ -13,9 +13,10 @@ class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
-        val isClicked = intent.getBooleanExtra(FirstActivity::IS_BUTTON_CLICKED.toString(), false)
-        val tapCount = intent.getIntExtra(FirstActivity::COUNTER.toString(), 0)
-        val text = intent.getStringExtra(FirstActivity::INPUT_TEXT.toString())
+        val intent = getIntent()
+        val isClicked = intent.getBooleanExtra(FirstActivity.IS_BUTTON_CLICKED, false)
+        val tapCount = intent.getIntExtra(FirstActivity.COUNTER, 0)
+        val text = intent.getStringExtra(FirstActivity.INPUT_TEXT)
         receivedText +=
             "Нажатие индикатора: ${isClicked}\n" +
             "Количество нажатий на кнопку: ${tapCount}\n" +

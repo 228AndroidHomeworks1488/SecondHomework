@@ -13,9 +13,11 @@ class FirstActivity : AppCompatActivity() {
     private lateinit var nextActivityButton: Button
     private lateinit var textField: EditText
 
-    public val IS_BUTTON_CLICKED = "IS_BUTTON_CLICKED"
-    public val COUNTER = "IS_BUTTON_CLICKED"
-    public val INPUT_TEXT = "INPUT_TEXT"
+    companion object{
+        val IS_BUTTON_CLICKED = "IS_BUTTON_CLICKED"
+        val COUNTER = "COUNTER"
+        val INPUT_TEXT = "INPUT_TEXT"
+    }
 
 
     private var counter = 0
@@ -37,33 +39,26 @@ class FirstActivity : AppCompatActivity() {
     fun setOnClickListeners(){
 
         indicatorButton.setOnClickListener {
-            indicatorButton.setEnabled(false)
+            indicatorButton.isEnabled = false
             isClicked = true
         }
 
         counterButton.setOnClickListener {
             counter++
-            counterButton.setText("нажато ${counter} раз")
+            counterButton.text = "нажато ${counter} раз"
         }
 
         nextActivityButton.setOnClickListener {
             val intent = Intent(this, SecondActivity::class.java)
             intent.putExtra(COUNTER, counter)
             intent.putExtra(IS_BUTTON_CLICKED, isClicked)
-            intent.putExtra(INPUT_TEXT, textField.getText().toString())
+            var text = textField.text.toString()
+            intent.putExtra(INPUT_TEXT, text)
 
             startActivity(intent)
 
         }
-
     }
-
-    /*override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putInt(COUNTER, counter)
-        outState.putBoolean(IS_BUTTON_CLICKED, isClicked)
-        outState.putString(INPUT_TEXT, textField.getText().toString())
-    }*/
 
     fun initActivity(){
         initViews()
