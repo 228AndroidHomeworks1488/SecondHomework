@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">SecondHomework</string>
-    <string name="indicator_button">индикатор</string>
-    <string name="counter_button">нажато 0 раз</string>
-    <string name="next_activity_button">вторая активность</string>
+    <string name="next_activity_button"> Вперед </string>
 </resources>
